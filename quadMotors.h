@@ -14,7 +14,7 @@ public:
   void preInitialize() const;
   void initialize() const;
 
-  void write(const int m1, const int m2, const int m3, const int m4);
+  void write(const int m1, const int m2, const int m3, const int m4) const;
 private:
   const int signal1, pwm1;
   const int signal2, pwm2;
