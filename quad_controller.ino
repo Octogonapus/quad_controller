@@ -7,7 +7,7 @@
 LSM303 compass;
 L3G gyro;
 QuadMotors motors(4,3,7,6,12,11,2,10);
-okapi::Pid yrotPID(0.3, 0, 0);
+okapi::Pid pitchPID(0.3, 0, 0), rollPID(0.3, 0, 0), yawPID(0.3, 0, 0);
 
 void setup() {
   Serial.begin(115200);
@@ -29,14 +29,17 @@ void setup() {
   compass.enableDefault(); 
 
   motors.initialize();
-  yrotPID.setTarget(255);
+  
+  pitchPID.setTarget(0);
+  rollPID.setTarget(0);
+  yawPID.setTarget(0);
 }
 
 void loop() {
   gyro.read();
   compass.read();
   
-  motors.write(yrotPID.step(51*(compass.a.y/3277.0)), 0, 0, 0);
+  motors.tpry(0, pitchPID.step(compass.a.x), rollPID.step(compass.a.y), yawPID.step(compass.a.z));
 
   delay(20);
 }

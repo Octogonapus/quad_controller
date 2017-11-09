@@ -25,3 +25,11 @@ void QuadMotors::write(const int m1, const int m2, const int m3, const int m4) c
     analogWrite(pwm3, m3);
     analogWrite(pwm4, m4);
 }
+
+void QuadMotors::tpry(const int throttle, const int pitch, const int roll, const int yaw) const {
+  analogWrite(pwm1, throttle + roll + pitch + yaw);
+  analogWrite(pwm2, throttle - roll + pitch + yaw);
+  analogWrite(pwm3, throttle + roll - pitch - yaw);
+  analogWrite(pwm4, throttle - roll - pitch + yaw);
+}
+
