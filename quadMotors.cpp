@@ -19,9 +19,9 @@ void QuadMotors::initialize() const {
     digitalWrite(signal4, HIGH);
 }
 
-void QuadMotors::hover(const int power) const {
-    analogWrite(pwm1, power);
-    analogWrite(pwm2, power);
-    analogWrite(pwm3, power);
-    analogWrite(pwm4, power);
+void QuadMotors::write(const int m1, const int m2, const int m3, const int m4) const {
+    analogWrite(pwm1, m1);
+    analogWrite(pwm2, m2);
+    analogWrite(pwm3, m3);
+    analogWrite(pwm4, m4);
 }

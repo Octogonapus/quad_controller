@@ -35,7 +35,7 @@ void loop() {
   gyro.read();
   compass.read();
   
-  motors.hover(51*(compass.a.y/3277.0));
+  motors.write(51*(compass.a.y/3277.0),0,0,0);
 
 //  outstring.setCharAt(11+((int)gyro.g.x)/3277, 'x');
 //  outstring.setCharAt(11+((int)compass.a.x)/3277, 'X');
